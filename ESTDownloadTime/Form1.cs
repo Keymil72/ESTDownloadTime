@@ -1,3 +1,6 @@
+using ESTDownloadTime.logic;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+
 namespace ESTDownloadTime
 {
     public partial class Main : Form
@@ -25,10 +28,11 @@ namespace ESTDownloadTime
         private void Calculate(object sender, EventArgs e)
         {
             decimal speed = Speed.Value;
-            int speedUnti = SpeedUnit.TabIndex;
+            int speedUnti = SpeedUnit.SelectedIndex;
             decimal toDownload = Size.Value;
-            int downloadUnit = DownloadUnit.TabIndex;
-            Application app = new Application();
+            int downloadUnit = DownloadUnit.SelectedIndex;
+            App app = new App();
+            Time.Text = app.init(speed, speedUnti, toDownload, downloadUnit);
 
         }
 
